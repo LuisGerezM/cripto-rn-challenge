@@ -33,7 +33,7 @@ const App = (): JSX.Element => {
             }}
           />
           <Stack.Screen
-            name={routes.ADDCRIPTOCURRENCY}
+            name={routes.ADD_CIRPTO_CURRENCY}
             component={AddCriptoCurrency}
             options={{
               headerBackTitleVisible: false,

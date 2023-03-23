@@ -26,7 +26,7 @@ const CriptoList = (): JSX.Element => {
       )}
       <ButtonToNavigate
         text="Add a Criptocurency"
-        to={routes.ADDCRIPTOCURRENCY}>
+        to={routes.ADD_CIRPTO_CURRENCY}>
         <MaterialIcons name="add" size={20} />
       </ButtonToNavigate>
     </WrapCriptoList>

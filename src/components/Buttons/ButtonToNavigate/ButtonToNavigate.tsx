@@ -20,7 +20,7 @@ const ButtonToNavigate = ({
   const navigation = useNavigation();
 
   const handlerAddPressed = (): void => {
-    // navigation.navigate(to);
+    navigation.navigate(to);
   };
 
   return (

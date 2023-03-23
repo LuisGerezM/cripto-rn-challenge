@@ -17,7 +17,7 @@ interface CriptoC {
     name: string;
     symbol: string;
     price_usd: number;
-    percent: number;
+    percent_24: number;
     icon: string;
   };
 }
@@ -51,7 +51,7 @@ const CriptoCard = ({cripto}: CriptoC) => {
         <WrapStatusPercent>
           {loadImg && <SpinnerLoader color={defaultTheme.colors.blueGray} />}
           <ImageComponent
-            src={sourceByPercent(cripto.percent)}
+            src={sourceByPercent(cripto.percent_24)}
             loadImg={loadImg}
             handleLoadingImg={handleLoadingImg}
             width="15px"
@@ -60,8 +60,8 @@ const CriptoCard = ({cripto}: CriptoC) => {
           <TextComponent
             fontSize="text"
             fontWeight="light"
-            color={cripto.percent > 0 ? 'green' : 'red'}>
-            {convertNegativeNum(cripto.percent)}%
+            color={cripto.percent_24 > 0 ? 'green' : 'red'}>
+            {convertNegativeNum(cripto.percent_24)}%
           </TextComponent>
         </WrapStatusPercent>
       </WrapPriceAndPercentCripto>

@@ -4,7 +4,7 @@ import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.sty
 import {NavigationButton} from '../styled-components/NavigationButton.styled';
 
 interface ButtonToNav {
-  children?: JSX.Element;
+  children?: JSX.Element | [];
   text?: string;
   [key: string]: any;
 }
@@ -20,13 +20,16 @@ const ButtonToNavigate = ({
   const navigation = useNavigation();
 
   const handlerAddPressed = (): void => {
-    // navigation.navigate(to);
+    navigation.navigate(to);
   };
 
   return (
     <NavigationButton onPress={handlerAddPressed}>
-      {children || null}
-      <TextComponent fontSize={fontSize} fontWeight={fontWeight} color={color}>
+      {children}
+      <TextComponent
+        fontSizeType={fontSize}
+        fontWeight={fontWeight}
+        color={color}>
         {text}
       </TextComponent>
     </NavigationButton>

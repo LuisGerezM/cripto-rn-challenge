@@ -6,7 +6,7 @@ interface MsgAlert {
   text: string;
   backgroundColor: string;
   padding: string;
-  fontSize: string;
+  fontSizeType: string;
   fontWeight: string;
   color: string;
 }
@@ -15,13 +15,16 @@ const MessageAsAlert = ({
   text,
   backgroundColor,
   padding,
-  fontSize = 'title',
+  fontSizeType = 'title',
   fontWeight = 'heavy',
   color = 'white',
 }: MsgAlert) => {
   return (
     <Alert backgroundColor={backgroundColor} padding={padding}>
-      <TextComponent fontSize={fontSize} fontWeight={fontWeight} color={color}>
+      <TextComponent
+        fontSizeType={fontSizeType}
+        fontWeight={fontWeight}
+        color={color}>
         {text}
       </TextComponent>
     </Alert>

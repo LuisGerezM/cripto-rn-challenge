@@ -1,12 +1,13 @@
 import React from 'react';
+import {View} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {mockCriptosData} from 'src/bd-mock/criptoData.mock';
 import MessageAsAlert from 'src/components/Alert/MessageAsAlert';
 import ButtonToNavigate from 'src/components/Buttons/ButtonToNavigate/ButtonToNavigate';
 import {routes} from 'src/models/routes.models';
 import CriptoCard from 'src/pages/Home/components/CriptoCard/CriptoCard';
-import {criptoSchema} from 'src/schema/cripto.schema';
+import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import styled from 'styled-components/native';
+import {useCriptoList} from '../../hooks/useCriptoList';
 
 const WrapCriptoList = styled.ScrollView`
   width: 100%;
@@ -15,18 +16,33 @@ const WrapCriptoList = styled.ScrollView`
 `;
 
 const CriptoList = (): JSX.Element => {
+  const {lodingCriptosByUser, criptoData, errorMessage} = useCriptoList();
+
+  if (lodingCriptosByUser) {
+    return (
+      <View style={{marginTop: 10}}>
+        <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
+          Cargando...
+        </TextComponent>
+      </View>
+    );
+  }
+
   return (
     <WrapCriptoList>
-      {!mockCriptosData.length ? (
-        <MessageAsAlert text={criptoSchema.dontCripto} fontSize="subTitle" />
+      {!criptoData.length ? (
+        <MessageAsAlert
+          text={errorMessage || 'Aún no tienes criptomonedas'}
+          fontSizeType="subTitle"
+        />
       ) : (
-        mockCriptosData.map(cripto => (
+        criptoData.map(cripto => (
           <CriptoCard key={cripto.symbol} cripto={cripto} />
         ))
       )}
       <ButtonToNavigate
         text="Add a Criptocurency"
-        to={routes.ADDCRIPTOCURRENCY}>
+        to={routes.ADD_CRIPTO_CURRENCY}>
         <MaterialIcons name="add" size={20} />
       </ButtonToNavigate>
     </WrapCriptoList>

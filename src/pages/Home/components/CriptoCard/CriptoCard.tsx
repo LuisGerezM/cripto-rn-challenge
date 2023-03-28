@@ -12,7 +12,7 @@ import {
   WrapStatusPercent,
 } from './styled-components/CriptoCard.styled';
 
-interface CriptoC {
+interface CriptoCard {
   cripto: {
     name: string;
     symbol: string;
@@ -22,7 +22,7 @@ interface CriptoC {
   };
 }
 
-const CriptoCard = ({cripto}: CriptoC) => {
+const CriptoCard = ({cripto}: CriptoCard) => {
   const {loadImg, handleLoadingImg, sourceByPercent, convertNegativeNum} =
     useCriptoCard();
 
@@ -34,18 +34,24 @@ const CriptoCard = ({cripto}: CriptoC) => {
           src={{uri: cripto.icon}}
           loadImg={loadImg}
           handleLoadingImg={handleLoadingImg}
+          width="32px"
+          height="32px"
         />
-        <View>
-          <TextComponent fontSize="subTitle" fontWeight="bold" color="darkBlue">
+        <View style={{marginLeft: 5}}>
+          <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
             {cripto.name}
           </TextComponent>
-          <TextComponent fontSize="text" fontWeight="light" color="grey">
+          <TextComponent
+            fontSizeType="text"
+            fontWeight="light"
+            color="grey"
+            textAlign="left">
             {cripto.symbol}
           </TextComponent>
         </View>
       </WrapNameAndIconCripto>
       <WrapPriceAndPercentCripto>
-        <TextComponent fontSize="subTitle" fontWeight="bold" color="darkBlue">
+        <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
           ${cripto.price_usd}
         </TextComponent>
         <WrapStatusPercent>
@@ -58,7 +64,7 @@ const CriptoCard = ({cripto}: CriptoC) => {
             height="15px"
           />
           <TextComponent
-            fontSize="text"
+            fontSizeType="text"
             fontWeight="light"
             color={cripto.percent > 0 ? 'green' : 'red'}>
             {convertNegativeNum(cripto.percent)}%

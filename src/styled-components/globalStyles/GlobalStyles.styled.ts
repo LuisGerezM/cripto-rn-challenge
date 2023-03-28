@@ -1,10 +1,10 @@
 import styled, {css} from 'styled-components/native';
 
 export interface StylesProps {
-  color?: string;
+  color: string;
   loading?: boolean;
-  fontSize?: string;
-  fontWeight?: string;
+  fontSizeType: string;
+  fontWeight: string;
   height?: string;
   width?: string;
   backgroundColor?: string;
@@ -13,7 +13,7 @@ export interface StylesProps {
 }
 
 const TextComponent = styled.Text<StylesProps>`
-  font-size: ${props => props.theme.fontSizes[props.fontSize]};
+  font-size: ${props => props.theme.fontSizeType[props.fontSizeType]};
   font-weight: ${props => props.theme.fontWeights[props.fontWeight]};
   color: ${props => props.theme.colors[props.color]};
   text-align: ${props => props.textAlign || 'center'};

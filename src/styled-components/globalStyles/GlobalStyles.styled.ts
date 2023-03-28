@@ -1,21 +1,24 @@
-import styled, {css} from 'styled-components/native';
+import styled, {css, DefaultTheme} from 'styled-components/native';
 
 export interface StylesProps {
-  color?: string;
+  color: string;
   loading?: boolean;
-  fontSize?: string;
-  fontWeight?: string;
+  fontSizeType: string;
+  fontWeight: string;
   height?: string;
   width?: string;
   backgroundColor?: string;
   padding?: string;
   textAlign?: string;
+  theme: DefaultTheme;
 }
 
 const TextComponent = styled.Text<StylesProps>`
-  font-size: ${props => props.theme.fontSizes[props.fontSize]};
-  font-weight: ${props => props.theme.fontWeights[props.fontWeight]};
-  color: ${props => props.theme.colors[props.color]};
+  font-size: ${({fontSizeType, theme}: StylesProps) =>
+    theme.fontSizeType[fontSizeType]};
+  font-weight: ${({fontWeight, theme}: StylesProps) =>
+    theme.fontWeights[fontWeight]};
+  color: ${({color, theme}: StylesProps) => theme.colors[color]};
   text-align: ${props => props.textAlign || 'center'};
 `;
 

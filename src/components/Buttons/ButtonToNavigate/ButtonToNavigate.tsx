@@ -11,7 +11,7 @@ interface ButtonToNav {
 
 const ButtonToNavigate = ({
   children,
-  fontSize = 'text',
+  fontSizeType = 'text',
   fontWeight = 'bold',
   color = 'blueGray',
   text = '',
@@ -20,13 +20,16 @@ const ButtonToNavigate = ({
   const navigation = useNavigation();
 
   const handlerAddPressed = (): void => {
-    // navigation.navigate(to);
+    navigation.navigate(to);
   };
 
   return (
     <NavigationButton onPress={handlerAddPressed}>
       {children || null}
-      <TextComponent fontSize={fontSize} fontWeight={fontWeight} color={color}>
+      <TextComponent
+        fontSizeType={fontSizeType}
+        fontWeight={fontWeight}
+        color={color}>
         {text}
       </TextComponent>
     </NavigationButton>

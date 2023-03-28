@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 export interface StylesProps {
   color?: string;
   loading?: boolean;
-  fontSize?: string;
+  fontSizeType?: string;
   fontWeight?: string;
 }
 

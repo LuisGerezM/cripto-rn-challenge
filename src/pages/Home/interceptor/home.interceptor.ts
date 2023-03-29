@@ -11,9 +11,8 @@ const getCriptosByUser = async (arrayData: Cripto[], signal: AbortSignal) => {
 
     const fetching = await fetchAPI({url, signal});
 
-    const {data} = fetching.data;
-
-    if (fetching.status === 200) {
+    if (!fetching.status.error_code) {
+      const {data} = fetching;
       criptosByUser.push(criptoAdapter(data));
     } else {
       const doNotChangeData = arrayData.find(money => money.id === cripto.id);

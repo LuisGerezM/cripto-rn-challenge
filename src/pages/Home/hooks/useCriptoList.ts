@@ -9,7 +9,7 @@ export const useCriptoList = () => {
     {
       id: '1e31218a-e44e-4285-820c-8282ee222035',
       name: '',
-      symbol: '',
+      symbol: 'BTC',
       price_usd: 0,
       percent: 0,
       icon: '',
@@ -17,7 +17,7 @@ export const useCriptoList = () => {
     {
       id: '21c795f5-1bfd-40c3-858e-e9d7e820c6d0',
       name: '',
-      symbol: '',
+      symbol: 'ETH',
       price_usd: 0,
       percent: 0,
       icon: '',
@@ -25,7 +25,7 @@ export const useCriptoList = () => {
     {
       id: '97775be0-2608-4720-b7af-f85b24c7eb2d',
       name: '',
-      symbol: '',
+      symbol: 'XRP',
       price_usd: 0,
       percent: 0,
       icon: '',

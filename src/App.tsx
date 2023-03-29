@@ -24,7 +24,8 @@ const App = (): JSX.Element => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName={routes.HOME}>
+        {/* <Stack.Navigator initialRouteName={routes.HOME}> */}
+        <Stack.Navigator initialRouteName={routes.ADD_CRIPTO_CURRENCY}>
           <Stack.Screen
             name={routes.HOME}
             component={Home}
@@ -37,6 +38,7 @@ const App = (): JSX.Element => {
             component={AddCriptoCurrency}
             options={{
               headerBackTitleVisible: false,
+              headerShown: false,
             }}
           />
         </Stack.Navigator>

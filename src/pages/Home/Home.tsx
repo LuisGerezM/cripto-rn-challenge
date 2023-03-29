@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {Container} from 'src/App.styled';
 import CriptoList from './components/CritpoList/CriptoList';
+import {Container} from './styled-components/Home';
 
 const Home = (): JSX.Element => {
   return (

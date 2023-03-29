@@ -25,7 +25,7 @@ const ButtonToNavigate = ({
 
   return (
     <NavigationButton onPress={handlerAddPressed}>
-      {children || null}
+      {children}
       <TextComponent fontSize={fontSize} fontWeight={fontWeight} color={color}>
         {text}
       </TextComponent>

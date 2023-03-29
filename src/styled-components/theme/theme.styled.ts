@@ -3,26 +3,13 @@ import {DefaultTheme} from 'styled-components/native';
 declare module 'styled-components/native' {
   export interface DefaultTheme {
     colors: {
-      black: string;
-      blueGray: string;
-      darkBlue: string;
-      green: string;
-      grey: string;
-      navyBlue: string;
-      red: string;
-      skyBlue: string;
-      white: string;
-      yellow: string;
+      [key: string]: string;
     };
     fontSizes: {
-      title: string;
-      subTitle: string;
-      text: string;
+      [key: string]: string;
     };
     fontWeights: {
-      heavy: number;
-      bold: number;
-      light: number;
+      [key: string]: number;
     };
   }
 }

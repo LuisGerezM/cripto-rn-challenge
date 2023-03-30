@@ -1,6 +1,6 @@
 import {useSpinnerLoading} from 'src/hooks/useSpinnerLoading';
 
-export const useCriptoCard = () => {
+export const useCryptoCard = () => {
   const {loadImg, handleLoadingImg} = useSpinnerLoading();
 
   const sourceByPercent = (percent: number) =>

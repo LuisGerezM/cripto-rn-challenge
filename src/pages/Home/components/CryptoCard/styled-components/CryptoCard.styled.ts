@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const Cripto = styled.View`
+const Crypto = styled.View`
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -9,14 +9,14 @@ const Cripto = styled.View`
   padding: 15px 0;
 `;
 
-const WrapNameAndIconCripto = styled.View`
+const WrapNameAndIconCrypto = styled.View`
   display: flex;
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
 `;
 
-const WrapPriceAndPercentCripto = styled.View`
+const WrapPriceAndPercentCrypto = styled.View`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
@@ -31,8 +31,8 @@ const WrapStatusPercent = styled.View`
 `;
 
 export {
-  Cripto,
-  WrapNameAndIconCripto,
-  WrapPriceAndPercentCripto,
+  Crypto,
+  WrapNameAndIconCrypto,
+  WrapPriceAndPercentCrypto,
   WrapStatusPercent,
 };

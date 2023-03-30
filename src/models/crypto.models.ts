@@ -1,4 +1,4 @@
-export interface Cripto {
+export interface Crypto {
   name: string;
   symbol: string;
   price_usd: number;

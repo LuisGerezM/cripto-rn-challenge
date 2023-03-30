@@ -29,7 +29,7 @@ const CriptoCard = ({cripto}: CriptoCard) => {
   return (
     <Cripto>
       <WrapNameAndIconCripto>
-        {loadImg && <SpinnerLoader color={defaultTheme.colors.blueGray} />}
+        {loadImg && <SpinnerLoader />}
         <ImageComponent
           src={{uri: cripto.icon}}
           loadImg={loadImg}

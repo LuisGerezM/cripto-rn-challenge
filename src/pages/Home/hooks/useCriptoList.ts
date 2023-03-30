@@ -1,7 +1,9 @@
 import {useEffect, useState} from 'react';
 import {useAlertUserFeedback} from 'src/hooks/useAlertUserFeedback';
 import {Cripto} from 'src/models/cripto.models';
+import {errorType} from 'src/utils/errorType.util';
 import {getCriptosByUser} from '../interceptor/home.interceptor';
+import {messagesByHttpCode} from 'src/schema/messageByHttpCode.schema';
 
 export const useCriptoList = () => {
   const {showAlertUserFeedback} = useAlertUserFeedback();
@@ -12,7 +14,7 @@ export const useCriptoList = () => {
       symbol: '',
       price_usd: 0,
       percent: 0,
-      icon: '',
+      icon: 'https://asset-images.messari.io/images/1e31218a-e44e-4285-820c-8282ee222035/32.png?v=2',
     },
     {
       id: '21c795f5-1bfd-40c3-858e-e9d7e820c6d0',
@@ -42,14 +44,10 @@ export const useCriptoList = () => {
         setCriptoData(criptosByUser);
       } catch (error: unknown) {
         console.error('Error get your criptos', error.message);
-        const messageErrorToUser =
-          'Ocurrió un problema al cargar tus criptomonedas; Intentalo mas tarde';
+
+        errorType(error.message, showAlertUserFeedback);
         setCriptoData([]);
-        showAlertUserFeedback({
-          title: 'Error',
-          message: messageErrorToUser,
-        });
-        setErrorMessage(messageErrorToUser);
+        setErrorMessage(messagesByHttpCode[500]);
       } finally {
         setLodingPersonalCriptos(false);
       }

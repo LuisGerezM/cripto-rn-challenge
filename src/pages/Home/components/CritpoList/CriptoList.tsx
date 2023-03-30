@@ -1,11 +1,10 @@
 import React from 'react';
-import {View} from 'react-native';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import MessageAsAlert from 'src/components/Alert/MessageAsAlert';
 import ButtonToNavigate from 'src/components/Buttons/ButtonToNavigate/ButtonToNavigate';
+import {SpinnerLoader} from 'src/components/Spinner/SpinnerLoader';
 import {routes} from 'src/models/routes.models';
 import CriptoCard from 'src/pages/Home/components/CriptoCard/CriptoCard';
-import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import styled from 'styled-components/native';
 import {useCriptoList} from '../../hooks/useCriptoList';
 
@@ -19,13 +18,7 @@ const CriptoList = (): JSX.Element => {
   const {lodingPersonalCriptos, criptoData, errorMessage} = useCriptoList();
 
   if (lodingPersonalCriptos) {
-    return (
-      <View style={{marginTop: 10}}>
-        <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
-          Cargando...
-        </TextComponent>
-      </View>
-    );
+    return <SpinnerLoader text="Cargando..." />;
   }
 
   return (

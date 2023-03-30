@@ -1,5 +1,6 @@
 import {Cripto} from 'src/models/cripto.models';
 import {replaceCriptoImage} from 'src/utils/replaceCriptoImage.utils';
+import {toFixedCriptoNumber} from 'src/utils/toFixedCriptoNumber.utils';
 
 interface CriptoAdaptParams {
   id: string;
@@ -15,9 +16,9 @@ export const criptoAdapter = (cripto: CriptoAdaptParams): Cripto => ({
   id: cripto.id,
   name: cripto.name,
   symbol: cripto.symbol,
-  price_usd: Number(cripto.market_data.price_usd.toFixed(2)),
-  percent: Number(
-    cripto.market_data.percent_change_usd_last_24_hours.toFixed(2),
+  price_usd: toFixedCriptoNumber(cripto.market_data.price_usd),
+  percent: toFixedCriptoNumber(
+    cripto.market_data.percent_change_usd_last_24_hours,
   ),
   icon: replaceCriptoImage(cripto.id),
 });

@@ -7,7 +7,7 @@ interface AlertUserFeedback {
 
 export const useAlertUserFeedback = () => {
   const showAlertUserFeedback = ({title, message}: AlertUserFeedback) =>
-    Alert.alert(title, message, [{text: 'Ok'}]);
+    Alert.alert(title, message, [{text: 'Ok', onPress: () => true}]);
 
   return {showAlertUserFeedback};
 };

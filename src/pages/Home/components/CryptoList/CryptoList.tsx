@@ -4,41 +4,43 @@ import MessageAsAlert from 'src/components/Alert/MessageAsAlert';
 import ButtonToNavigate from 'src/components/Buttons/ButtonToNavigate/ButtonToNavigate';
 import {SpinnerLoader} from 'src/components/Spinner/SpinnerLoader';
 import {routes} from 'src/models/routes.models';
-import CriptoCard from 'src/pages/Home/components/CriptoCard/CriptoCard';
+import CryptoCard from 'src/pages/Home/components/CryptoCard/CryptoCard';
 import styled from 'styled-components/native';
-import {useCriptoList} from '../../hooks/useCriptoList';
+import {useCryptoList} from '../../hooks/useCryptoList';
 
-const WrapCriptoList = styled.ScrollView`
+const WrapCryptoList = styled.ScrollView`
   width: 100%;
   padding: 0 15px;
   margin-top: 15px;
 `;
 
-const CriptoList = (): JSX.Element => {
-  const {lodingPersonalCriptos, criptoData, errorMessage} = useCriptoList();
+const CryptoList = (): JSX.Element => {
+  const {lodingPersonalCryptos, cryptoData, errorMessage} = useCryptoList();
 
-  if (lodingPersonalCriptos) {
+  if (lodingPersonalCryptos) {
     return <SpinnerLoader text="Cargando..." />;
   }
 
   return (
-    <WrapCriptoList>
-      {!criptoData.length ? (
+    <WrapCryptoList>
+      {!cryptoData.length ? (
         <MessageAsAlert
-          text={errorMessage || 'Aún no tienes criptomonedas'}
+          text={
+            errorMessage || "You don't have crypto. Please select some crypto"
+          }
           fontSize="subTitle"
         />
       ) : (
-        criptoData.map(cripto => (
-          <CriptoCard key={cripto.symbol} cripto={cripto} />
+        cryptoData.map(crypto => (
+          <CryptoCard key={crypto.symbol} crypto={crypto} />
         ))
       )}
       <ButtonToNavigate
-        text="Add a Criptocurency"
-        to={routes.ADD_CRIPTO_CURRENCY}>
+        text="Add a Cryptocurency"
+        to={routes.ADD_CRYPTO_CURRENCY}>
         <MaterialIcons name="add" size={20} />
       </ButtonToNavigate>
-    </WrapCriptoList>
+    </WrapCryptoList>
   );
 };
-export default CriptoList;
+export default CryptoList;

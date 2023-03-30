@@ -6,7 +6,10 @@ import {NavigationButton} from '../styled-components/NavigationButton.styled';
 interface ButtonToNav {
   children?: JSX.Element | [];
   text?: string;
-  [key: string]: any;
+  to: string;
+  fontSize?: string;
+  fontWeight?: string;
+  color?: string;
 }
 
 const ButtonToNavigate = ({
@@ -19,7 +22,7 @@ const ButtonToNavigate = ({
 }: ButtonToNav) => {
   const navigation = useNavigation();
 
-  const handlerAddPressed = (): void => {
+  const handlerAddPressed = () => {
     navigation.navigate(to);
   };
 

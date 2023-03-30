@@ -1,59 +1,61 @@
 import {useEffect, useState} from 'react';
 import {useAlertUserFeedback} from 'src/hooks/useAlertUserFeedback';
-import {Cripto} from 'src/models/cripto.models';
+import {Crypto} from 'src/models/crypto.models';
 import {errorType} from 'src/utils/errorType.util';
-import {getCriptosByUser} from '../interceptor/home.interceptor';
+import {getCryptosByUser} from '../interceptor/home.interceptor';
 import {messagesByHttpCode} from 'src/schema/messageByHttpCode.schema';
 
-export const useCriptoList = () => {
+export const useCryptoList = () => {
   const {showAlertUserFeedback} = useAlertUserFeedback();
-  const [criptoData, setCriptoData] = useState<Cripto[]>([
+  const [cryptoData, setCryptoData] = useState<Crypto[]>([
     {
       id: '1e31218a-e44e-4285-820c-8282ee222035',
-      name: '',
+      name: 'BTC',
       symbol: '',
       price_usd: 0,
-      percent: 0,
-      icon: 'https://asset-images.messari.io/images/1e31218a-e44e-4285-820c-8282ee222035/32.png?v=2',
+      percent_24: 0,
+      icon: '',
     },
     {
       id: '21c795f5-1bfd-40c3-858e-e9d7e820c6d0',
-      name: '',
+      name: 'ETH',
       symbol: '',
       price_usd: 0,
-      percent: 0,
+      percent_24: 0,
       icon: '',
     },
     {
       id: '97775be0-2608-4720-b7af-f85b24c7eb2d',
-      name: '',
+      name: 'RXP',
       symbol: '',
       price_usd: 0,
-      percent: 0,
+      percent_24: 0,
       icon: '',
     },
   ]);
-  const [lodingPersonalCriptos, setLodingPersonalCriptos] = useState(true);
+
+  const [lodingPersonalCryptos, setLodingPersonalCryptos] = useState(false);
   const [errorMessage, setErrorMessage] = useState<string>('');
 
   useEffect(() => {
-    const getYourCriptos = async (signal: AbortSignal) => {
+    const getYourCryptos = async (signal: AbortSignal) => {
       try {
-        const criptosByUser = await getCriptosByUser(criptoData, signal);
+        const cryptosByUser = await getCryptosByUser(cryptoData, signal);
 
-        setCriptoData(criptosByUser);
+        setCryptoData(cryptosByUser);
       } catch (error: unknown) {
-        console.error('Error get your criptos', error.message);
+        console.error('Error get your cryptos', error.message);
 
         errorType(error.message, showAlertUserFeedback);
-        setCriptoData([]);
+        setCryptoData([]);
         setErrorMessage(messagesByHttpCode[500]);
       } finally {
-        setLodingPersonalCriptos(false);
+        setLodingPersonalCryptos(false);
       }
     };
 
-    if (criptoData.length > 0) {
+    if (cryptoData.length > 0) {
+      setLodingPersonalCryptos(true);
       const controller = new AbortController();
 
       const timeOut = setTimeout(() => {
@@ -61,7 +63,7 @@ export const useCriptoList = () => {
       }, 10000);
 
       setErrorMessage('');
-      getYourCriptos(controller.signal);
+      getYourCryptos(controller.signal);
 
       return () => {
         controller.abort();
@@ -70,5 +72,5 @@ export const useCriptoList = () => {
     }
   }, []);
 
-  return {lodingPersonalCriptos, criptoData, errorMessage};
+  return {lodingPersonalCryptos, cryptoData, errorMessage};
 };

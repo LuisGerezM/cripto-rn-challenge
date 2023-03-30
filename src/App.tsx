@@ -16,7 +16,7 @@ import {routes} from './models/routes.models';
 import {defaultTheme} from './styled-components/theme/theme.styled';
 import Header from './components/Header/Header';
 import Home from './pages/Home/Home';
-import AddCriptoCurrency from './pages/AddCriptoCurrency/AddCriptoCurrency';
+import AddCryptoCurrency from './pages/AddCryptoCurrency/AddCryptoCurrency';
 
 const Stack = createNativeStackNavigator();
 
@@ -33,8 +33,8 @@ const App = (): JSX.Element => {
             }}
           />
           <Stack.Screen
-            name={routes.ADDCRIPTOCURRENCY}
-            component={AddCriptoCurrency}
+            name={routes.ADD_CRYPTO_CURRENCY}
+            component={AddCryptoCurrency}
             options={{
               headerBackTitleVisible: false,
             }}

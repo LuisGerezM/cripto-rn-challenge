@@ -1,5 +1,7 @@
 Resources.txt
 
+.env.local
+
 # OSX
 #
 .DS_Store

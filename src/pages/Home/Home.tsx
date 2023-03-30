@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-import {Container} from 'src/App.styled';
-import CriptoList from './components/CritpoList/CriptoList';
+import CryptoList from './components/CrytpoList/CryptoList';
+import {Container} from './styled-components/Home';
 
 const Home = (): JSX.Element => {
   return (
     <Container>
-      <CriptoList />
+      <CryptoList />
     </Container>
   );
 };

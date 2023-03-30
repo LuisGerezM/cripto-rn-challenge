@@ -20,12 +20,12 @@ const ButtonToNavigate = ({
   const navigation = useNavigation();
 
   const handlerAddPressed = (): void => {
-    // navigation.navigate(to);
+    navigation.navigate(to);
   };
 
   return (
     <NavigationButton onPress={handlerAddPressed}>
-      {children || null}
+      {children}
       <TextComponent fontSize={fontSize} fontWeight={fontWeight} color={color}>
         {text}
       </TextComponent>

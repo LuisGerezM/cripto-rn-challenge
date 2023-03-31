@@ -1,9 +1,5 @@
-export * from './Alert';
-export * from './Alert/styled-components/MessageAsAlert.styled';
-export * from './Buttons/ButtonToNavigate';
-export * from './Buttons';
-export * from './Buttons/styled-components/NavigationButton.styled';
-export * from './Header';
-export * from './Header/styled-components/Header.styled';
-export * from './Images';
-export * from './Spinner';
+export {default as MessageAsAlert} from './Alert/MessageAsAlert';
+export {default as ButtonToNavigate} from './Buttons/ButtonToNavigate';
+export {default as Header} from './Header';
+export {default as ImageComponent} from './Images';
+export {default as SpinnerLoader} from './Spinner';

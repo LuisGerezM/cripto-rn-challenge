@@ -1,1 +1,1 @@
-export * from './messageByHttpCode.schema';
+export {default as messageByHttpCode} from './messageByHttpCode.schema';

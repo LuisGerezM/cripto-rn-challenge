@@ -2,7 +2,7 @@ interface MessagesByHttpCode {
   [key: number]: string;
 }
 
-export const messagesByHttpCode: MessagesByHttpCode = {
+const messagesByHttpCode: MessagesByHttpCode = {
   400: 'Check param value for field id',
   401: 'Authentication fail',
   403: 'Authorization fail',
@@ -10,3 +10,5 @@ export const messagesByHttpCode: MessagesByHttpCode = {
   429: 'You must wait a few minutes',
   500: 'There is been a problem; Try again later',
 };
+
+export default messagesByHttpCode;

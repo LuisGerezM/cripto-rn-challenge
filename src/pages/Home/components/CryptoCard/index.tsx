@@ -1,7 +1,8 @@
 import React from 'react';
 import {ImageComponent, SpinnerLoader} from 'src/components';
-import {defaultTheme, TextComponent} from 'src/styled-components';
-import {useCryptoCard} from '../../hooks';
+import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
+import {defaultTheme} from 'src/styled-components/theme/theme.styled';
+import {useCryptoCard} from '../../hooks/useCryptoCard';
 import {
   Crypto,
   WrapNameAndIconCrypto,

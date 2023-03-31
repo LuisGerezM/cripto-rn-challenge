@@ -1,3 +1,2 @@
-export * from './CryptoCard';
-export * from './CryptoCard/styled-components/CryptoCard.styled';
-export * from './CryptoList';
+export {default as CryptoCard} from './CryptoCard';
+export {default as CryptoList} from './CryptoList';

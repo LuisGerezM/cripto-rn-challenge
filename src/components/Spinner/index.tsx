@@ -1,6 +1,7 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
-import {defaultTheme, TextComponent} from 'src/styled-components';
+import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
+import {defaultTheme} from 'src/styled-components/theme/theme.styled';
 import styled from 'styled-components/native';
 
 interface SpinnerProps {
@@ -8,7 +9,7 @@ interface SpinnerProps {
   text?: string;
 }
 
-export const SpinnerLoader = ({
+const SpinnerLoader = ({
   color = defaultTheme.colors.blueGray,
   text = '',
 }: SpinnerProps): JSX.Element => {
@@ -23,6 +24,8 @@ export const SpinnerLoader = ({
     </WrapSpinnerLoad>
   );
 };
+
+export default SpinnerLoader;
 
 const WrapSpinnerLoad = styled.View`
   margin: 15px 0;

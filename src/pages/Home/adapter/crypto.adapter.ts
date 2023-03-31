@@ -1,8 +1,3 @@
-// import {Crypto} from 'src/models/crypto.models';
-// import {URLs} from 'src/services/URLs.service';
-// import {replaceTo} from 'src/utils/replaceTo.utils';
-// import {toFixedCryptoNumber} from 'src/utils/toFixedCryptoNumber.utils';
-
 import {Crypto} from 'src/models';
 import {URLs} from 'src/services';
 import {replaceTo, toFixedCryptoNumber} from 'src/utils';

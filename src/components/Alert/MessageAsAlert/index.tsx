@@ -1,6 +1,6 @@
 import React from 'react';
-import {TextComponent} from 'src/styled-components';
-import {Alert} from './styled-components/MessageAsAlert.styled';
+import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
+import {Alert} from '../styled-components/MessageAsAlert.styled';
 
 interface MsgAlert {
   text: string;

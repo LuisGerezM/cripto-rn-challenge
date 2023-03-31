@@ -2,8 +2,9 @@ import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import {ButtonToNavigate, MessageAsAlert, SpinnerLoader} from 'src/components';
 import {routes} from 'src/models';
-import {useCryptoList} from '../../hooks';
-import {CryptoCard} from '../CryptoCard';
+import {useCryptoList} from '../../hooks/useCryptoList';
+import CryptoCard from '../CryptoCard';
+
 import styled from 'styled-components/native';
 
 const WrapCryptoList = styled.ScrollView`

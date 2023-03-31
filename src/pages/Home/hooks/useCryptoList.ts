@@ -1,9 +1,9 @@
 import {useEffect, useState} from 'react';
 import {useAlertUserFeedback} from 'src/hooks';
 import {Crypto} from 'src/models';
-import {messagesByHttpCode} from 'src/schema';
 import {errorType} from 'src/utils';
-import {getCryptosByUser} from '../interceptor';
+import {getCryptosByUser} from '../interceptor/home.interceptor';
+import messagesByHttpCode from 'src/schema/messageByHttpCode.schema';
 
 export const useCryptoList = () => {
   const {showAlertUserFeedback} = useAlertUserFeedback();

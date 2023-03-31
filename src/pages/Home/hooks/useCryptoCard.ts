@@ -1,4 +1,4 @@
-import {useImageLoading} from 'src/hooks/useImageLoading';
+import {useImageLoading} from 'src/hooks';
 
 export const useCryptoCard = () => {
   const {loadImg, handleLoadingImg} = useImageLoading();

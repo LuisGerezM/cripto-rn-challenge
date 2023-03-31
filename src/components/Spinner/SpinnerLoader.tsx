@@ -1,7 +1,6 @@
 import React from 'react';
 import {ActivityIndicator} from 'react-native';
-import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
-import {defaultTheme} from 'src/styled-components/theme/theme.styled';
+import {defaultTheme, TextComponent} from 'src/styled-components';
 import styled from 'styled-components/native';
 
 interface SpinnerProps {
@@ -17,7 +16,7 @@ export const SpinnerLoader = ({
     <WrapSpinnerLoad>
       {text && (
         <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
-          {text}{' '}
+          {text}
         </TextComponent>
       )}
       <ActivityIndicator size="large" color={color} />

@@ -1,13 +1,11 @@
 import React from 'react';
-import {View} from 'react-native';
-import ImageComponent from 'src/components/Images/ImageComponent';
-import {SpinnerLoader} from 'src/components/Spinner/SpinnerLoader';
-import {useCryptoCard} from 'src/pages/Home/hooks/useCryptoCard';
-import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
-import {defaultTheme} from 'src/styled-components/theme/theme.styled';
+import {ImageComponent, SpinnerLoader} from 'src/components';
+import {defaultTheme, TextComponent} from 'src/styled-components';
+import {useCryptoCard} from '../../hooks';
 import {
   Crypto,
   WrapNameAndIconCrypto,
+  WrapNameAndSymbol,
   WrapPriceAndPercentCrypto,
   WrapStatusPercent,
 } from './styled-components/CryptoCard.styled';
@@ -37,7 +35,7 @@ const CryptoCard = ({crypto}: CryptoCard) => {
           width="32px"
           height="32px"
         />
-        <View style={{marginLeft: 5}}>
+        <WrapNameAndSymbol>
           <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
             {crypto.name}
           </TextComponent>
@@ -48,7 +46,7 @@ const CryptoCard = ({crypto}: CryptoCard) => {
             textAlign="left">
             {crypto.symbol}
           </TextComponent>
-        </View>
+        </WrapNameAndSymbol>
       </WrapNameAndIconCrypto>
       <WrapPriceAndPercentCrypto>
         <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">

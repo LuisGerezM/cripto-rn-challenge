@@ -1,6 +1,6 @@
 import {useNavigation} from '@react-navigation/native';
 import React from 'react';
-import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
+import {TextComponent} from 'src/styled-components';
 import {NavigationButton} from '../styled-components/NavigationButton.styled';
 
 interface ButtonToNav {
@@ -12,7 +12,7 @@ interface ButtonToNav {
   color?: string;
 }
 
-const ButtonToNavigate = ({
+export const ButtonToNavigate = ({
   children,
   fontSize = 'text',
   fontWeight = 'bold',
@@ -38,4 +38,3 @@ const ButtonToNavigate = ({
     </NavigationButton>
   );
 };
-export default ButtonToNavigate;

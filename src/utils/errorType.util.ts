@@ -1,4 +1,4 @@
-import {messagesByHttpCode} from 'src/schema/messageByHttpCode.schema';
+import {messagesByHttpCode} from 'src/schema';
 
 interface ErrorType {
   error: string | {};

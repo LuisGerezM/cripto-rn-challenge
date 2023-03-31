@@ -16,6 +16,10 @@ const WrapNameAndIconCrypto = styled.View`
   align-items: center;
 `;
 
+const WrapNameAndSymbol = styled.View`
+  margin-left: 8px;
+`;
+
 const WrapPriceAndPercentCrypto = styled.View`
   display: flex;
   flex-flow: column nowrap;
@@ -35,4 +39,5 @@ export {
   WrapNameAndIconCrypto,
   WrapPriceAndPercentCrypto,
   WrapStatusPercent,
+  WrapNameAndSymbol,
 };

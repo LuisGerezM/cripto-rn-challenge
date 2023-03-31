@@ -1,12 +1,10 @@
 import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import MessageAsAlert from 'src/components/Alert/MessageAsAlert';
-import ButtonToNavigate from 'src/components/Buttons/ButtonToNavigate/ButtonToNavigate';
-import {SpinnerLoader} from 'src/components/Spinner/SpinnerLoader';
-import {routes} from 'src/models/routes.models';
-import CryptoCard from 'src/pages/Home/components/CryptoCard/CryptoCard';
+import {ButtonToNavigate, MessageAsAlert, SpinnerLoader} from 'src/components';
+import {routes} from 'src/models';
+import {useCryptoList} from '../../hooks';
+import {CryptoCard} from '../CryptoCard';
 import styled from 'styled-components/native';
-import {useCryptoList} from '../../hooks/useCryptoList';
 
 const WrapCryptoList = styled.ScrollView`
   width: 100%;

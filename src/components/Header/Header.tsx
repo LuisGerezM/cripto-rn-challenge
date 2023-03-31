@@ -1,9 +1,8 @@
 import React from 'react';
-import {useImageLoading} from 'src/hooks/useImageLoading';
-import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
-import {defaultTheme} from 'src/styled-components/theme/theme.styled';
-import ImageComponent from '../Images/ImageComponent';
-import {SpinnerLoader} from '../Spinner/SpinnerLoader';
+import {useImageLoading} from 'src/hooks';
+import {defaultTheme, TextComponent} from 'src/styled-components';
+import {ImageComponent} from '../Images';
+import {SpinnerLoader} from '../Spinner';
 import {WrapHeader} from './styled-components/Header.styled';
 
 const Header = (): JSX.Element => {

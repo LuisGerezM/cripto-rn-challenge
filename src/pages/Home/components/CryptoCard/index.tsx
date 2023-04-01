@@ -1,18 +1,17 @@
 import React from 'react';
-import {View} from 'react-native';
-import ImageComponent from 'src/components/Images/ImageComponent';
-import {SpinnerLoader} from 'src/components/Spinner/SpinnerLoader';
-import {useCryptoCard} from 'src/pages/Home/hooks/useCryptoCard';
+import {ImageComponent, SpinnerLoader} from 'src/components';
 import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import {defaultTheme} from 'src/styled-components/theme/theme.styled';
+import {useCryptoCard} from '../../hooks/useCryptoCard';
 import {
   Crypto,
   WrapNameAndIconCrypto,
+  WrapNameAndSymbol,
   WrapPriceAndPercentCrypto,
   WrapStatusPercent,
 } from './styled-components/CryptoCard.styled';
 
-interface CryptoC {
+interface CryptoCard {
   crypto: {
     name: string;
     symbol: string;
@@ -22,30 +21,36 @@ interface CryptoC {
   };
 }
 
-const CryptoCard = ({crypto}: CryptoC) => {
+const CryptoCard = ({crypto}: CryptoCard) => {
   const {loadImg, handleLoadingImg, sourceByPercent, convertNegativeNum} =
     useCryptoCard();
 
   return (
     <Crypto>
       <WrapNameAndIconCrypto>
-        {loadImg && <SpinnerLoader color={defaultTheme.colors.blueGray} />}
+        {loadImg && <SpinnerLoader />}
         <ImageComponent
           src={{uri: crypto.icon}}
           loadImg={loadImg}
           handleLoadingImg={handleLoadingImg}
+          width="32px"
+          height="32px"
         />
-        <View>
-          <TextComponent fontSize="subTitle" fontWeight="bold" color="darkBlue">
+        <WrapNameAndSymbol>
+          <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
             {crypto.name}
           </TextComponent>
-          <TextComponent fontSize="text" fontWeight="light" color="grey">
+          <TextComponent
+            fontSizeType="text"
+            fontWeight="light"
+            color="grey"
+            textAlign="left">
             {crypto.symbol}
           </TextComponent>
-        </View>
+        </WrapNameAndSymbol>
       </WrapNameAndIconCrypto>
       <WrapPriceAndPercentCrypto>
-        <TextComponent fontSize="subTitle" fontWeight="bold" color="darkBlue">
+        <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
           ${crypto.price_usd}
         </TextComponent>
         <WrapStatusPercent>
@@ -58,7 +63,7 @@ const CryptoCard = ({crypto}: CryptoC) => {
             height="15px"
           />
           <TextComponent
-            fontSize="text"
+            fontSizeType="text"
             fontWeight="light"
             color={crypto.percent_24 > 0 ? 'green' : 'red'}>
             {convertNegativeNum(crypto.percent_24)}%

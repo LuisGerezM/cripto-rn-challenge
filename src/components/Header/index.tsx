@@ -1,17 +1,17 @@
 import React from 'react';
-import {useSpinnerLoading} from 'src/hooks/useSpinnerLoading';
+import {useImageLoading} from 'src/hooks';
 import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import {defaultTheme} from 'src/styled-components/theme/theme.styled';
-import ImageComponent from '../Images/ImageComponent';
-import {SpinnerLoader} from '../Spinner/SpinnerLoader';
+import ImageComponent from '../Images';
+import SpinnerLoader from '../Spinner';
 import {WrapHeader} from './styled-components/Header.styled';
 
 const Header = (): JSX.Element => {
-  const {loadImg, handleLoadingImg} = useSpinnerLoading();
+  const {loadImg, handleLoadingImg} = useImageLoading();
 
   return (
     <WrapHeader>
-      <TextComponent fontSize="title" fontWeight="heavy" color="white">
+      <TextComponent fontSizeType="title" fontWeight="heavy" color="white">
         CryptoTracker Pro
       </TextComponent>
       {loadImg && <SpinnerLoader color={defaultTheme.colors.white} />}

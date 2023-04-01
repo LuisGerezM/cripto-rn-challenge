@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {ImageIcon} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 
 interface Image {

@@ -12,11 +12,10 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ThemeProvider} from 'styled-components/native';
-import {routes} from './models/routes.models';
+import {routes} from './models';
+import {Header} from './components';
+import {AddCryptoCurrency, Home} from './pages';
 import {defaultTheme} from './styled-components/theme/theme.styled';
-import Header from './components/Header/Header';
-import Home from './pages/Home/Home';
-import AddCryptoCurrency from './pages/AddCryptoCurrency/AddCryptoCurrency';
 
 const Stack = createNativeStackNavigator();
 

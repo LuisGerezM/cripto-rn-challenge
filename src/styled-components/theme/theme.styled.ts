@@ -5,7 +5,7 @@ declare module 'styled-components/native' {
     colors: {
       [key: string]: string;
     };
-    fontSizes: {
+    fontSizeType: {
       [key: string]: string;
     };
     fontWeights: {
@@ -27,7 +27,7 @@ export const defaultTheme: DefaultTheme = {
     white: '#fafafa',
     yellow: '#fad24c',
   },
-  fontSizes: {
+  fontSizeType: {
     title: '25px',
     subTitle: '20px',
     text: '15px',

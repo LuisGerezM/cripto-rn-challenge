@@ -12,7 +12,6 @@ export const useAlertUserConfirm = () => {
         {
           text: 'aceptar',
           onPress: () => {
-            console.log('press true');
             resolve(true);
           },
         },

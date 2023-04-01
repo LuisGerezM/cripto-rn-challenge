@@ -12,11 +12,10 @@ import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {ThemeProvider} from 'styled-components/native';
-import {routes} from './models/routes.models';
+import {routes} from './models';
+import {Header} from './components';
 import {defaultTheme} from './styled-components/theme/theme.styled';
-import Header from './components/Header/Header';
-import Home from './pages/Home/Home';
-import AddCriptoCurrency from './pages/AddCriptoCurrency/AddCriptoCurrency';
+import {AddCryptoCurrency, Home} from './pages';
 
 const Stack = createNativeStackNavigator();
 
@@ -24,8 +23,7 @@ const App = (): JSX.Element => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <NavigationContainer>
-        {/* <Stack.Navigator initialRouteName={routes.HOME}> */}
-        <Stack.Navigator initialRouteName={routes.ADD_CRIPTO_CURRENCY}>
+        <Stack.Navigator initialRouteName={routes.HOME}>
           <Stack.Screen
             name={routes.HOME}
             component={Home}
@@ -34,8 +32,8 @@ const App = (): JSX.Element => {
             }}
           />
           <Stack.Screen
-            name={routes.ADD_CRIPTO_CURRENCY}
-            component={AddCriptoCurrency}
+            name={routes.ADD_CRYPTO_CURRENCY}
+            component={AddCryptoCurrency}
             options={{
               headerBackTitleVisible: false,
               headerShown: false,

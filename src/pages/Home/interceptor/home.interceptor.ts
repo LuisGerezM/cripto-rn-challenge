@@ -1,24 +1,21 @@
-import {API_BASE_URL} from '@env';
-import {Cripto} from 'src/models/cripto.models';
-import fetchAPI from 'src/services/fetchAPI.service';
-import {criptoAdapter} from '../adapter/cripto.adapter';
+import {Crypto} from 'src/models';
+import {cryptoAdapter} from 'src/pages/adapter/crypto.adapter';
+import {fetchAPI, URLs} from 'src/services';
+import {replaceTo} from 'src/utils';
 
-const getCriptosByUser = async (arrayData: Cripto[], signal: AbortSignal) => {
-  let criptosByUser: Cripto[] = [];
+const getCryptosByUser = async (arrayData: Crypto[], signal: AbortSignal) => {
+  let cryptosByUser: Crypto[] = [];
 
-  const promises = arrayData.map(async cripto => {
-    const url = `${API_BASE_URL}/assets/${cripto.id}/metrics`;
+  const promises = arrayData.map(async crypto => {
+    const url = replaceTo(URLs.cryptoWithMetrics, 'CRYPTO_ID', crypto.id);
 
     const fetching = await fetchAPI({url, signal});
 
-    if (!fetching.status.error_code) {
-      const {data} = fetching;
-      criptosByUser.push(criptoAdapter(data));
+    if (fetching.status.error_code) {
+      cryptosByUser.push(crypto);
     } else {
-      const doNotChangeData = arrayData.find(money => money.id === cripto.id);
-      if (doNotChangeData) {
-        criptosByUser.push(doNotChangeData);
-      }
+      const {data} = fetching;
+      cryptosByUser.push(cryptoAdapter(data));
     }
 
     return fetching;
@@ -26,7 +23,7 @@ const getCriptosByUser = async (arrayData: Cripto[], signal: AbortSignal) => {
 
   await Promise.all(promises);
 
-  return [...criptosByUser].sort((a, b) => b.price_usd - a.price_usd);
+  return [...cryptosByUser].sort((a, b) => b.price_usd - a.price_usd);
 };
 
-export {getCriptosByUser};
+export {getCryptosByUser};

@@ -20,6 +20,5 @@ export default async function fetchAPI({
     headers,
   });
 
-  // return {status: response.status, data: await response.json()};
   return response.json();
 }

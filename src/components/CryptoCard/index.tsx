@@ -1,15 +1,15 @@
-import React from 'react';
+import React, {ReactNode} from 'react';
 import {ImageComponent, SpinnerLoader} from 'src/components';
+import {useCryptoCard} from 'src/hooks/useCryptoCard';
 import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import {defaultTheme} from 'src/styled-components/theme/theme.styled';
-import {useCryptoCard} from '../../hooks/useCryptoCard';
 import {
-  Crypto,
+  Card,
   WrapNameAndIconCrypto,
   WrapNameAndSymbol,
   WrapPriceAndPercentCrypto,
   WrapStatusPercent,
-} from './styled-components/CryptoCard.styled';
+} from './styled-components/Card.styled';
 
 interface CryptoCard {
   crypto: {
@@ -19,14 +19,16 @@ interface CryptoCard {
     percent_24: number;
     icon: string;
   };
+  children?: ReactNode;
 }
 
-const CryptoCard = ({crypto}: CryptoCard) => {
+const CryptoCard = ({crypto, children}: CryptoCard) => {
+  // console.log({children}, children ? 'EXISTE' : 'NO EXISTE');
   const {loadImg, handleLoadingImg, sourceByPercent, convertNegativeNum} =
     useCryptoCard();
 
   return (
-    <Crypto>
+    <Card>
       <WrapNameAndIconCrypto>
         {loadImg && <SpinnerLoader />}
         <ImageComponent
@@ -70,7 +72,8 @@ const CryptoCard = ({crypto}: CryptoCard) => {
           </TextComponent>
         </WrapStatusPercent>
       </WrapPriceAndPercentCrypto>
-    </Crypto>
+      {children}
+    </Card>
   );
 };
 export default CryptoCard;

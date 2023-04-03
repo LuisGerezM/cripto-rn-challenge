@@ -5,13 +5,12 @@ const WrapForm = styled.View`
   align-items: flex-start;
   justify-content: flex-start;
   width: 85%;
-
-  height: 400px;
   padding-top: 20px;
+  margin-bottom: 25px;
 `;
 
 type WrapAddButton = {
-  isLoading: string;
+  isLoading: boolean;
 };
 
 const WrapAddButton = styled.View<WrapAddButton>`

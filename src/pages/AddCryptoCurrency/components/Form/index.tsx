@@ -1,9 +1,9 @@
 import React from 'react';
 import {Controller} from 'react-hook-form';
 import {Text} from 'react-native';
+import {Button} from 'src/components';
 import {ErrorsValidationForm} from 'src/components/Errors/ErrorsValidationForm/ErrorsValidationForm';
 import {
-  CustomButton,
   Input,
   TextComponent,
 } from 'src/styled-components/globalStyles/GlobalStyles.styled';
@@ -39,16 +39,14 @@ const Form = () => {
 
       <WrapAddButton isLoading={loadingSearchCripto}>
         {loadingSearchCripto && <Text>Buscando... </Text>}
-        <CustomButton
+        <Button
           onPress={handleSubmit(onSubmit)}
           backgroundColor="yellow"
           borderColor="grey"
           width="50%"
-          disabled={!!loadingSearchCripto}>
-          <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
-            Add
-          </TextComponent>
-        </CustomButton>
+          disabled={!!loadingSearchCripto}
+          buttonColor="darkBlue"
+        />
       </WrapAddButton>
     </WrapForm>
   );

@@ -23,7 +23,6 @@ export interface StylesProps {
   borderColor?: string;
   borderRadius?: string;
   disabled?: string;
-  // textAlign?: string;
   theme: DefaultTheme;
 }
 

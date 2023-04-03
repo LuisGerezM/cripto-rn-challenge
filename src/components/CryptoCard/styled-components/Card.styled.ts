@@ -1,6 +1,6 @@
 import styled from 'styled-components/native';
 
-const Crypto = styled.View`
+const Card = styled.View`
   width: 100%;
   display: flex;
   flex-flow: row nowrap;
@@ -14,6 +14,7 @@ const WrapNameAndIconCrypto = styled.View`
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: center;
+  width: 50%;
 `;
 
 const WrapNameAndSymbol = styled.View`
@@ -24,7 +25,9 @@ const WrapPriceAndPercentCrypto = styled.View`
   display: flex;
   flex-flow: column nowrap;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+
+  width: 25%;
 `;
 
 const WrapStatusPercent = styled.View`
@@ -35,7 +38,7 @@ const WrapStatusPercent = styled.View`
 `;
 
 export {
-  Crypto,
+  Card,
   WrapNameAndIconCrypto,
   WrapPriceAndPercentCrypto,
   WrapStatusPercent,

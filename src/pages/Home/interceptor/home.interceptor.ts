@@ -1,5 +1,5 @@
+import {cryptoAdapter} from 'src/adapters';
 import {Crypto} from 'src/models';
-import {cryptoAdapter} from 'src/pages/adapter/crypto.adapter';
 import {fetchAPI, URLs} from 'src/services';
 import {replaceTo} from 'src/utils';
 

@@ -1,17 +1,14 @@
 import React from 'react';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import {ButtonToNavigate, MessageAsAlert, SpinnerLoader} from 'src/components';
+import {
+  ButtonToNavigate,
+  CryptoCard,
+  MessageAsAlert,
+  SpinnerLoader,
+  WrapCryptoList,
+} from 'src/components';
 import {routes} from 'src/models';
 import {useCryptoList} from '../../hooks/useCryptoList';
-import CryptoCard from '../CryptoCard';
-
-import styled from 'styled-components/native';
-
-const WrapCryptoList = styled.ScrollView`
-  width: 100%;
-  padding: 0 15px;
-  margin-top: 15px;
-`;
 
 const CryptoList = (): JSX.Element => {
   const {lodingPersonalCryptos, cryptoData, errorMessage} = useCryptoList();

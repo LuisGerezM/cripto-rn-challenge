@@ -63,7 +63,7 @@ const useAllCryptoList = () => {
 
   const handlePress = async (crypto: Crypto) => {
     const message = createCryptoFoundMsg(
-      'Datos',
+      'Data',
       crypto.name,
       crypto.symbol,
       crypto.price_usd,

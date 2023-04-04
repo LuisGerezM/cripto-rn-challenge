@@ -99,7 +99,7 @@ const useAddCryptoForm = () => {
         const {id, name, symbol, percent_24, price_usd} = fetching;
 
         const message = createCryptoFoundMsg(
-          'Moneda encontrada',
+          'Crypto found',
           name,
           symbol,
           price_usd,
@@ -107,7 +107,7 @@ const useAddCryptoForm = () => {
         );
 
         const userConfirm = await showAlertUserConfirm({
-          title: 'Busqueda con éxito',
+          title: 'Successful search',
           message,
         });
 
@@ -120,7 +120,6 @@ const useAddCryptoForm = () => {
           resetField('criptoCurrency');
         }
       } catch (error) {
-        console.error('Error searching cripto', error.message);
         errorType(error.message, showAlertUserFeedback);
       } finally {
         setLoadingSearchCripto(false);

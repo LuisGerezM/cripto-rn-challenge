@@ -10,12 +10,12 @@ export const useAlertUserConfirm = () => {
     new Promise(resolve => {
       Alert.alert(title, message, [
         {
-          text: 'aceptar',
+          text: 'Ok',
           onPress: () => {
             resolve(true);
           },
         },
-        {text: 'Cancelar', onPress: () => resolve(false)},
+        {text: 'Cancel', onPress: () => resolve(false)},
       ]);
     });
 

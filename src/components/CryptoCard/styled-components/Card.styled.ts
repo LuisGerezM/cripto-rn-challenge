@@ -26,7 +26,6 @@ const WrapPriceAndPercentCrypto = styled.View`
   flex-flow: column nowrap;
   justify-content: center;
   align-items: center;
-
   width: 25%;
 `;
 

@@ -1,18 +1,12 @@
 import React, {ReactNode} from 'react';
-import styled from 'styled-components/native';
+import {WrapList} from './styled-components/WrapCryptoList.styled';
 
 interface WrapCryptoList {
   children: ReactNode;
 }
 
-const WrapCryptoList = ({children}: WrapCryptoList): JSX.Element => {
-  return <WrapList>{children}</WrapList>;
-};
-export default WrapCryptoList;
+const WrapCryptoList = ({children}: WrapCryptoList): JSX.Element => (
+  <WrapList>{children}</WrapList>
+);
 
-const WrapList = styled.ScrollView`
-  width: 100%;
-  padding: 0 15px;
-  margin-top: 15px;
-  margin-bottom: 30px;
-`;
+export default WrapCryptoList;

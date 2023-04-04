@@ -9,17 +9,16 @@ import {
   WrapButtonBack,
 } from './styled-components/AddCriptoCurrency.styled';
 
-const AddCriptoCurrency = (): JSX.Element => {
-  return (
-    <ScrollView>
-      <WrapAddCripto>
-        <WrapButtonBack>
-          <ButtonToNavigate text="< Back to list" to={routes.HOME} />
-        </WrapButtonBack>
-        <Form />
-        <AllCryptoList />
-      </WrapAddCripto>
-    </ScrollView>
-  );
-};
+const AddCriptoCurrency = (): JSX.Element => (
+  <ScrollView>
+    <WrapAddCripto>
+      <WrapButtonBack>
+        <ButtonToNavigate text="< Back to list" to={routes.HOME} />
+      </WrapButtonBack>
+      <Form />
+      <AllCryptoList />
+    </WrapAddCripto>
+  </ScrollView>
+);
+
 export default AddCriptoCurrency;

@@ -23,7 +23,6 @@ interface CryptoCard {
 }
 
 const CryptoCard = ({crypto, children}: CryptoCard) => {
-  // console.log({children}, children ? 'EXISTE' : 'NO EXISTE');
   const {loadImg, handleLoadingImg, sourceByPercent, convertNegativeNum} =
     useCryptoCard();
 

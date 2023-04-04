@@ -38,7 +38,7 @@ const Form = () => {
       )}
 
       <WrapAddButton isLoading={loadingSearchCripto}>
-        {loadingSearchCripto && <Text>Buscando... </Text>}
+        {loadingSearchCripto && <Text>Looking... </Text>}
         <Button
           onPress={handleSubmit(onSubmit)}
           backgroundColor="yellow"

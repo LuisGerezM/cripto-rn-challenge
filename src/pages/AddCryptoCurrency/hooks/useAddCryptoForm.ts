@@ -1,45 +1,18 @@
+import {useNavigation} from '@react-navigation/native';
 import {useEffect, useState} from 'react';
 import {useForm} from 'react-hook-form';
+import {useDispatch, useSelector} from 'react-redux';
 import {useAlertUserConfirm, useAlertUserFeedback} from 'src/hooks';
+import {addCryptoToList} from 'src/redux/states/cryptoData';
 import {errorType} from 'src/utils';
 import {getCrypto} from '../interceptor';
 import {createCryptoFoundMsg} from '../utilities';
 import searchExistCrypto from '../utilities/searchExistCrypto.util';
+import {routes} from 'src/models';
 
 type FormData = {
   criptoCurrency: string;
 };
-
-interface AreSerching {
-  criptoCurrency: string;
-}
-
-export const mockCryptoExist = [
-  {
-    id: '1e31218a-e44e-4285-820c-8282ee222035',
-    name: 'Bitcoin',
-    symbol: 'BTC',
-    price_usd: 0,
-    percent_24: 0,
-    icon: 'https://asset-images.messari.io/images/1e31218a-e44e-4285-820c-8282ee222035/32.png?v=2',
-  },
-  {
-    id: '21c795f5-1bfd-40c3-858e-e9d7e820c6d0',
-    name: 'Ethereum',
-    symbol: 'ETH',
-    price_usd: 0,
-    percent_24: 0,
-    icon: 'https://asset-images.messari.io/images/21c795f5-1bfd-40c3-858e-e9d7e820c6d0/32.png?v=2',
-  },
-  {
-    id: '97775be0-2608-4720-b7af-f85b24c7eb2d',
-    name: 'XRP',
-    symbol: 'XRP',
-    price_usd: 0,
-    percent_24: 0,
-    icon: 'https://asset-images.messari.io/images/97775be0-2608-4720-b7af-f85b24c7eb2d/32.png?v=2',
-  },
-];
 
 const useAddCryptoForm = () => {
   const {
@@ -55,9 +28,12 @@ const useAddCryptoForm = () => {
     },
   });
 
-  const [areSerching, setAreSerching] = useState<AreSerching>({
-    criptoCurrency: '',
-  });
+  const dispatch = useDispatch();
+  const cryptoData = useSelector(state => state.cryptoData);
+
+  const navigation = useNavigation();
+
+  const [areSearching, setAreSearching] = useState<string>('');
 
   const [loadingSearchCripto, setLoadingSearchCripto] =
     useState<boolean>(false);
@@ -65,12 +41,10 @@ const useAddCryptoForm = () => {
   const {showAlertUserFeedback} = useAlertUserFeedback();
   const {showAlertUserConfirm} = useAlertUserConfirm();
 
-  const [addNewCrypto, setAddNewCrypto] = useState({});
-
   const onSubmit = (data: FormData) => {
-    const cryptoOfInterest = data.criptoCurrency.trim() ?? '';
+    const cryptoOfInterest = data.criptoCurrency.trim();
 
-    const cryptoExist = searchExistCrypto(mockCryptoExist, cryptoOfInterest);
+    const cryptoExist = searchExistCrypto(cryptoData, cryptoOfInterest);
 
     if (cryptoExist) {
       setError('criptoCurrency', {
@@ -78,25 +52,29 @@ const useAddCryptoForm = () => {
         message: 'This crypto already exists',
       });
     } else {
-      setAreSerching(data);
+      setAreSearching(cryptoOfInterest);
     }
   };
 
   useEffect(() => {
-    const searchingCripto = async (signal: AbortSignal) => {
+    const searchingCripto = async (
+      cryptoSearching: string,
+      signal: AbortSignal,
+    ) => {
       try {
-        const fetching = await getCrypto(areSerching.criptoCurrency, signal);
+        const fetching = await getCrypto(cryptoSearching, signal);
 
         if (fetching.error_code) {
           setError('criptoCurrency', {
             type: 'custom',
             message:
-              'Search not valid. Search for name or symbol, e.g.: Bitcoin or BTC',
+              'Search not valid. Search for name or symbol and word without spaces, e.g.: Bitcoin, or, BTC',
           });
+          setAreSearching('');
           return;
         }
 
-        const {id, name, symbol, percent_24, price_usd} = fetching;
+        const {name, symbol, percent_24, price_usd} = fetching;
 
         const message = createCryptoFoundMsg(
           'Crypto found',
@@ -112,21 +90,30 @@ const useAddCryptoForm = () => {
         });
 
         if (userConfirm) {
-          setAddNewCrypto({id});
-          showAlertUserFeedback({
-            title: 'Operation successfully',
-            message: `Crypto ${name} added correctly`,
-          });
+          dispatch(addCryptoToList(fetching));
           resetField('criptoCurrency');
+
+          const addOtherCrypto = await showAlertUserConfirm({
+            title: 'Operation successfully',
+            message: `Crypto ${name} added correctly.
+Would do you add other crypto?`,
+          });
+
+          if (!addOtherCrypto) {
+            navigation.navigate(routes.HOME);
+          }
+        } else {
+          setAreSearching('');
         }
       } catch (error) {
         errorType(error.message, showAlertUserFeedback);
+        setAreSearching('');
       } finally {
         setLoadingSearchCripto(false);
       }
     };
 
-    if (areSerching.criptoCurrency) {
+    if (areSearching) {
       clearErrors('criptoCurrency');
       const controller = new AbortController();
       setLoadingSearchCripto(true);
@@ -134,14 +121,14 @@ const useAddCryptoForm = () => {
         controller.abort();
       }, 10000);
 
-      searchingCripto(controller.signal);
+      searchingCripto(areSearching, controller.signal);
 
       return () => {
         controller.abort();
         clearTimeout(timeOut);
       };
     }
-  }, [areSerching]);
+  }, [areSearching]);
 
   return {control, errors, loadingSearchCripto, handleSubmit, onSubmit};
 };

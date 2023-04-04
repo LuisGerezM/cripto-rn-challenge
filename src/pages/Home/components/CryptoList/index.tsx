@@ -4,30 +4,23 @@ import {
   ButtonToNavigate,
   CryptoCard,
   MessageAsAlert,
-  SpinnerLoader,
   WrapCryptoList,
 } from 'src/components';
-import {routes} from 'src/models';
+import {Crypto, routes} from 'src/models';
 import {useCryptoList} from '../../hooks/useCryptoList';
 
 const CryptoList = (): JSX.Element => {
-  const {lodingPersonalCryptos, cryptoData, errorMessage} = useCryptoList();
-
-  if (lodingPersonalCryptos) {
-    return <SpinnerLoader text="Cargando..." />;
-  }
+  const {cryptoData} = useCryptoList();
 
   return (
     <WrapCryptoList>
       {!cryptoData.length ? (
         <MessageAsAlert
-          text={
-            errorMessage || "You don't have crypto. Please select some crypto"
-          }
+          text={"You don't have crypto. Please select some crypto"}
           fontSize="subTitle"
         />
       ) : (
-        cryptoData.map(crypto => (
+        cryptoData.map((crypto: Crypto) => (
           <CryptoCard key={crypto.symbol} crypto={crypto} />
         ))
       )}

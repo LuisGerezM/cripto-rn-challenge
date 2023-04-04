@@ -2,21 +2,26 @@ import React from 'react';
 import {ActivityIndicator} from 'react-native';
 import {TextComponent} from 'src/styled-components/globalStyles/GlobalStyles.styled';
 import {defaultTheme} from 'src/styled-components/theme/theme.styled';
-import styled from 'styled-components/native';
+import {WrapSpinnerLoad} from './styled-components/SpinnerLoader.styled';
 
 interface SpinnerProps {
   color?: string;
   text?: string;
+  fontSizeType?: string;
 }
 
 const SpinnerLoader = ({
   color = defaultTheme.colors.blueGray,
   text = '',
+  fontSizeType = 'text',
 }: SpinnerProps): JSX.Element => {
   return (
     <WrapSpinnerLoad>
       {text && (
-        <TextComponent fontSizeType="text" fontWeight="bold" color="darkBlue">
+        <TextComponent
+          fontSizeType={fontSizeType}
+          fontWeight="bold"
+          color="darkBlue">
           {text}
         </TextComponent>
       )}
@@ -26,11 +31,3 @@ const SpinnerLoader = ({
 };
 
 export default SpinnerLoader;
-
-const WrapSpinnerLoad = styled.View`
-  margin: 15px 0;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  align-items: center;
-`;

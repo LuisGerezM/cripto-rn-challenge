@@ -12,8 +12,8 @@ const WrapButtonBack = styled.View`
   justify-content: flex-start;
   align-items: flex-start;
   width: 85%;
-  height: 100px;
-  padding-top: 20px;
+  margin-top: 43px;
+  margin-bottom: 70px;
 `;
 
 export {WrapAddCripto, WrapButtonBack};

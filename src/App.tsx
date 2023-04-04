@@ -8,40 +8,57 @@
  * @format
  */
 
-import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React from 'react';
+import {View} from 'react-native';
+import {Provider} from 'react-redux';
+import {persistStore} from 'redux-persist';
+import {PersistGate} from 'redux-persist/integration/react';
 import {ThemeProvider} from 'styled-components/native';
+import {Header, SpinnerLoader} from './components';
 import {routes} from './models';
-import {Header} from './components';
-import {defaultTheme} from './styled-components/theme/theme.styled';
 import {AddCryptoCurrency, Home} from './pages';
+import {store} from './redux/store';
+import {defaultTheme} from './styled-components/theme/theme.styled';
 
 const Stack = createNativeStackNavigator();
 
+let persistor = persistStore(store);
+
 const App = (): JSX.Element => {
   return (
-    <ThemeProvider theme={defaultTheme}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName={routes.HOME}>
-          <Stack.Screen
-            name={routes.HOME}
-            component={Home}
-            options={{
-              header: () => <Header />,
-            }}
-          />
-          <Stack.Screen
-            name={routes.ADD_CRYPTO_CURRENCY}
-            component={AddCryptoCurrency}
-            options={{
-              headerBackTitleVisible: false,
-              headerShown: false,
-            }}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </ThemeProvider>
+    <Provider store={store}>
+      <PersistGate
+        loading={
+          <View>
+            <SpinnerLoader />
+          </View>
+        }
+        persistor={persistor}>
+        <ThemeProvider theme={defaultTheme}>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName={routes.HOME}>
+              <Stack.Screen
+                name={routes.HOME}
+                component={Home}
+                options={{
+                  header: () => <Header />,
+                }}
+              />
+              <Stack.Screen
+                name={routes.ADD_CRYPTO_CURRENCY}
+                component={AddCryptoCurrency}
+                options={{
+                  headerBackTitleVisible: false,
+                  headerShown: false,
+                }}
+              />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ThemeProvider>
+      </PersistGate>
+    </Provider>
   );
 };
 

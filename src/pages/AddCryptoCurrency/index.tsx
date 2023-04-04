@@ -3,7 +3,6 @@ import {ScrollView} from 'react-native';
 import {ButtonToNavigate} from 'src/components';
 import {routes} from 'src/models';
 import {Form} from './components';
-import AllCryptoList from './components/AllCryptosList';
 import {
   WrapAddCripto,
   WrapButtonBack,
@@ -16,7 +15,6 @@ const AddCriptoCurrency = (): JSX.Element => (
         <ButtonToNavigate text="< Back to list" to={routes.HOME} />
       </WrapButtonBack>
       <Form />
-      <AllCryptoList />
     </WrapAddCripto>
   </ScrollView>
 );

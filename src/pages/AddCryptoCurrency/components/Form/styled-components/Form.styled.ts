@@ -5,7 +5,7 @@ const WrapForm = styled.View`
   align-items: flex-start;
   justify-content: flex-start;
   width: 85%;
-  padding-top: 20px;
+  margin-top: 75px;
   margin-bottom: 25px;
 `;
 

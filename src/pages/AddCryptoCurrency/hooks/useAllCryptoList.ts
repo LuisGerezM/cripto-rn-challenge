@@ -10,7 +10,7 @@ const useAllCryptoList = () => {
   const {showAlertUserFeedback} = useAlertUserFeedback();
   const {showAlertUserConfirm} = useAlertUserConfirm();
 
-  const [pageNumber, setPageNumber] = useState<number>(1);
+  const [pageNumber, setPageNumber] = useState(1);
   const [loadingAllCryptos, setLoadingAllCryptos] = useState(false);
   const [allCryptos, setAllCryptos] = useState<Crypto[]>([]);
   const [messageError, setMessageError] = useState('');

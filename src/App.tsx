@@ -24,7 +24,7 @@ import {defaultTheme} from './styled-components/theme/theme.styled';
 
 const Stack = createNativeStackNavigator();
 
-let persistor = persistStore(store);
+const persistor = persistStore(store);
 
 const App = (): JSX.Element => {
   return (

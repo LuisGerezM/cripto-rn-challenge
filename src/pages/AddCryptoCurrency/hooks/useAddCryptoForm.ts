@@ -21,6 +21,7 @@ const useAddCryptoForm = () => {
     handleSubmit,
     clearErrors,
     setError,
+    watch,
     formState: {errors},
   } = useForm<FormData>({
     defaultValues: {
@@ -33,13 +34,14 @@ const useAddCryptoForm = () => {
 
   const navigation = useNavigation();
 
-  const [areSearching, setAreSearching] = useState<string>('');
+  const [isSearching, setAreSearching] = useState('');
 
-  const [loadingSearchCripto, setLoadingSearchCripto] =
-    useState<boolean>(false);
+  const [loadingSearchCripto, setLoadingSearchCripto] = useState(false);
 
   const {showAlertUserFeedback} = useAlertUserFeedback();
   const {showAlertUserConfirm} = useAlertUserConfirm();
+
+  const watchingCriptoCurrencyInput = watch('criptoCurrency');
 
   const onSubmit = (data: FormData) => {
     const cryptoOfInterest = data.criptoCurrency.trim();
@@ -128,9 +130,16 @@ Would do you add other crypto?`,
         clearTimeout(timeOut);
       };
     }
-  }, [areSearching]);
+  }, [isSearching]);
 
-  return {control, errors, loadingSearchCripto, handleSubmit, onSubmit};
+  return {
+    control,
+    errors,
+    loadingSearchCripto,
+    handleSubmit,
+    onSubmit,
+    watchingCriptoCurrencyInput,
+  };
 };
 
 export default useAddCryptoForm;

@@ -12,8 +12,14 @@ import {useAddCryptoForm} from '../../hooks';
 import {WrapAddButton, WrapForm} from './styled-components/Form.styled';
 
 const Form = () => {
-  const {control, errors, loadingSearchCripto, handleSubmit, onSubmit} =
-    useAddCryptoForm();
+  const {
+    control,
+    errors,
+    loadingSearchCripto,
+    handleSubmit,
+    onSubmit,
+    watchingCriptoCurrencyInput,
+  } = useAddCryptoForm();
 
   return (
     <WrapForm>
@@ -29,6 +35,8 @@ const Form = () => {
             onChangeText={onChange}
             value={value}
             placeholder="Use a name or ticket symbol..."
+            hasText={watchingCriptoCurrencyInput}
+            borderColor="yellow"
           />
         )}
         name="criptoCurrency"
@@ -42,9 +50,9 @@ const Form = () => {
         <Button
           onPress={handleSubmit(onSubmit)}
           backgroundColor="yellow"
-          borderColor="grey"
+          borderColor="yellow"
           width="50%"
-          disabled={!!loadingSearchCripto}
+          disabled={!watchingCriptoCurrencyInput}
           buttonColor="darkBlue"
         />
       </WrapAddButton>

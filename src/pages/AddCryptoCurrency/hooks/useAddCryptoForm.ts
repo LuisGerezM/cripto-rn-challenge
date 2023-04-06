@@ -115,7 +115,7 @@ Would do you add other crypto?`,
       }
     };
 
-    if (areSearching) {
+    if (isSearching) {
       clearErrors('criptoCurrency');
       const controller = new AbortController();
       setLoadingSearchCripto(true);
@@ -123,7 +123,7 @@ Would do you add other crypto?`,
         controller.abort();
       }, 10000);
 
-      searchingCripto(areSearching, controller.signal);
+      searchingCripto(isSearching, controller.signal);
 
       return () => {
         controller.abort();

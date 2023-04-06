@@ -1,13 +1,13 @@
 import styled from 'styled-components/native';
 
-export interface StylesProps {
+export interface NavigationProps {
   color?: string;
   loading?: boolean;
   fontSize?: string;
   fontWeight?: string;
 }
 
-const NavigationButton = styled.TouchableOpacity<StylesProps>`
+const NavigationButton = styled.TouchableOpacity<NavigationProps>`
   display: flex;
   flex-direction: row;
   justify-content: center;

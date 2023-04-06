@@ -1,6 +1,6 @@
 import {Alert} from 'react-native';
 
-interface AlertUserFeedback {
+export interface AlertUserFeedback {
   title: string;
   message: string;
 }

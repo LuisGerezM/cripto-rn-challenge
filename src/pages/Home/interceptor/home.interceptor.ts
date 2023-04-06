@@ -1,7 +1,7 @@
+import {cryptoAdapter} from 'src/adapters';
 import {Crypto} from 'src/models';
 import {fetchAPI, URLs} from 'src/services';
 import {replaceTo} from 'src/utils';
-import {cryptoAdapter} from '../adapter/crypto.adapter';
 
 const getCryptosByUser = async (arrayData: Crypto[], signal: AbortSignal) => {
   let cryptosByUser: Crypto[] = [];

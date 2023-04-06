@@ -11,8 +11,7 @@ interface CryptoAdaptParams {
     percent_change_usd_last_24_hours: number;
   };
 }
-
-export const cryptoAdapter = (crypto: CryptoAdaptParams): Crypto => ({
+const cryptoAdapter = (crypto: CryptoAdaptParams): Crypto => ({
   id: crypto.id,
   name: crypto.name,
   symbol: crypto.symbol,
@@ -22,3 +21,5 @@ export const cryptoAdapter = (crypto: CryptoAdaptParams): Crypto => ({
   ),
   icon: replaceTo(URLs.cryptoImages, 'CRYPTO_ID', crypto.id),
 });
+
+export default cryptoAdapter;

@@ -1,4 +1,4 @@
-import {messagesByHttpCode} from 'src/schema';
+import {messageByHttpCode} from 'src/schema';
 
 interface ErrorType {
   error: string | {};
@@ -12,7 +12,7 @@ export const errorType = (error: ErrorType, showAlertUserFeedback: any) => {
 
   const messageError: string = errorObj?.error_code
     ? `${errorObj.error_code} - ${errorObj.error_message}.
-  ${messagesByHttpCode[errorObj.error_code] || 500}`
+  ${messageByHttpCode[errorObj.error_code] || 500}`
     : 'There is been a problem; Try again later';
 
   showAlertUserFeedback({

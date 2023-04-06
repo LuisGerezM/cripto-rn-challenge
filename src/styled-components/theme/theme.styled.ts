@@ -21,11 +21,12 @@ export const defaultTheme: DefaultTheme = {
     darkBlue: '#26272E',
     green: '#0f8131',
     grey: '#7E7E7E',
+    greyBGInput: '#fafbfc',
     navyBlue: '#50717B',
     red: '#CF3A3A',
     skyBlue: '#8ECCCC',
     white: '#fafafa',
-    yellow: '#fad24c',
+    yellow: '#fad34d',
   },
   fontSizeType: {
     title: '25px',

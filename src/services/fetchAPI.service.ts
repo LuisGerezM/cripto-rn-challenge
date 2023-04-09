@@ -3,7 +3,7 @@ export interface ApiFetchInterface {
   method?: string;
   body?: string;
   headers?: {};
-  signal: AbortSignal;
+  signal?: AbortSignal;
 }
 
 export default async function fetchAPI({

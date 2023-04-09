@@ -8,9 +8,10 @@ export const cryptoListSlice = createSlice({
   initialState: initialCryptoListState,
   reducers: {
     addCryptoToList: (state, action) => [...current(state), action.payload],
+    updateCryptoToList: (state, action) => action.payload,
   },
 });
 
-export const {addCryptoToList} = cryptoListSlice.actions;
+export const {addCryptoToList, updateCryptoToList} = cryptoListSlice.actions;
 
 export default cryptoListSlice.reducer;

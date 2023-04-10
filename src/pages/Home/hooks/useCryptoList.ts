@@ -29,7 +29,7 @@ export const useCryptoList = () => {
 
     const interval = setInterval(() => {
       fetchData();
-    }, 225000);
+    }, 5000);
     return () => {
       clearInterval(interval);
     };
